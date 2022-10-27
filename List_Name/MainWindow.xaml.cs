@@ -22,6 +22,7 @@ namespace List_Name
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<string> listName = new List<string>();
         int CurrentColorId = 0;
         List<Color> RainbowList = new List<Color>()
         { Colors.Red,Colors.Orange,Colors.Yellow,Colors.Green,Colors.LightSkyBlue,Colors.Blue,Colors.BlueViolet};
@@ -43,6 +44,7 @@ namespace List_Name
             {
                 lstNames.Items.Add(nameTxt);
                 txtName.Clear();
+                listName.Add(nameTxt);
             }
         }
 
@@ -81,6 +83,7 @@ namespace List_Name
             }
 
             list.Sort();
+            listName.Sort();
 
             lstNames.Items.Clear();
 
@@ -115,6 +118,15 @@ namespace List_Name
             if (CurrentColorId == 7) CurrentColorId = 0;
         }
 
+        private void lstNames_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            string list = "";
+            foreach (var item in listName)
+            {
+                list += item + " \n";
+            }
+            MessageBox.Show(list);
+        }
     }
 }
 
